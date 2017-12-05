@@ -1,0 +1,1 @@
+﻿$env:ASPNETCORE_ENVIRONMENT = "Development";

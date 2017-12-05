@@ -1,0 +1,47 @@
+﻿@using EasyCQRS.Web.Features.Employees
+@model EasyCQRS.Web.Features.Employees.HireEmployeeCommand
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>View</h2>
+
+<h4>Hire Employee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Hire">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" type="text" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" type="date" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+			<div class="form-group">
+				<label asp-for="WeeklySalary" class="control-label"></label>
+				<input asp-for="WeeklySalary" class="form-control" type="number" />
+				<span asp-validation-for="WeeklySalary" class="text-danger"></span>
+			</div>
+			<div>
+				@ViewBag.Message
+			</div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="List">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

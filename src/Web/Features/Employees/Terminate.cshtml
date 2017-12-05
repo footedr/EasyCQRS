@@ -1,0 +1,44 @@
+﻿@model EasyCQRS.Web.Features.Employees.EmployeeIdQueryResponse
+
+@{
+    ViewData["Title"] = "Terminate";
+}
+
+<h2>Terminate Employee</h2>
+
+<div>
+	<h4>Confirm Termination of Employee #@Model.Id</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Id)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Id)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Name)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Name)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Salary)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Salary)
+		</dd>
+	</dl>
+
+	<div>
+		<form asp-action="TerminateConfirm" method="post">
+			@Html.HiddenFor(model => model.Id)
+			<button type="submit">Confirm</button>
+		</form>
+	</div>
+</div>
+<br />
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    <a asp-action="List">Back to List</a>
+</div>
