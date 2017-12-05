@@ -112,18 +112,15 @@ namespace EasyCQRS.Web.Features.Employees
 			return View(employee);
 		}
 
-		// Todo: FindAsync employee domain method
-		// Todo: Get single employee response (id, name, salary)
-		// Todo: Get single employee command
-		// Todo: Get single employee command handler
-		// Todo: EditEmployee request object (id, name, salary)
-		// Todo: EditEmployee command
-		// Todo: EditEmployeeValidation behavior (name not empty, salary > 0), IPipelineBehavior<EditEmployeeCommand, Unit>
-		// Todo: Edit employee controller actions
-		// Todo: Edit employee view
-		// Todo: Terminate employee command object (id)
-		// Todo: Terminate employee command handler
-		// Todo: Terminate employee confirmation view
-		// Todo: Terminate employee controller actions
+		// For code demo:
+		// Todo: Create update employee command (id, name, salary)
+		// Todo: Create update employee command handler (use _employeeDomain.UpdateEmployeeAsync)
+		// Todo: Create update GET and POST controller actions (copy and paste the edit ones, change types)
+		// Todo: Create update view (copy and rename Edit.cshtml, change types)
+		// Todo: Ensure update view posts to update controller action
+		// Todo: Update List.cshtml to point to the Update view (vs. Edit)
+		// Todo: Add DI bindings to Startup.cs for update command -> command handler
+		// Todo: Add update employee validation behavior (copy & paste from edit, change names)
+		// Todo: Add DI binding for update validation behavior -> IPipelineBehavior
 	}
 }
