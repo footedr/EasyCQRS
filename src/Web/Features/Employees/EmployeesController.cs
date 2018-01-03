@@ -62,22 +62,21 @@ namespace EasyCQRS.Web.Features.Employees
 			if (employee == null)
 				return NotFound();
 
-			var editEmployee = new EditEmployeeCommand
-			{
-				Name = employee.Name,
-				Id = employee.Id,
-				Salary = employee.Salary
-			};
-
-			return View(editEmployee);
+			return View();
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Edit(EditEmployeeCommand command)
+		public async Task<IActionResult> Edit()
 		{
 			try
 			{
-				await _mediator.Send(command);
+				// Todo: Create edit employee command				
+				// Todo: Create edit employee command handler
+				// Todo: Create edit employee validation behavior
+				// Todo: Modify Startup.cs for DI
+				// Todo: Modify GET action to create and return command
+				// Todo: Modify POST action to dispatch command and return command in event of error
+
 				return RedirectToAction("List");
 			}
 			catch (Exception exception)
@@ -85,7 +84,7 @@ namespace EasyCQRS.Web.Features.Employees
 				ModelState.AddModelError(string.Empty, exception.Message);
 			}
 
-			return View(command);
+			return View();
 		}
 
 		public async Task<IActionResult> Terminate(int id)
