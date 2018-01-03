@@ -1,6 +1,6 @@
 # EasyCQRS
 
-###Easy CQRS with ASP.NET Core and MediatR
+### Easy CQRS with ASP.NET Core and MediatR
 
 Are your controller actions gigantic? Is your service layer bloated? Are testing and maintenance a nightmare?  Need a scalable solution?
 
