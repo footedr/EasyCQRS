@@ -12,3 +12,4 @@ Using the popular .NET library, MediatR, it’s super easy to write simple, testab
 
 
 [Blog post and slide deck](http://ryanfoote.azurewebsites.net/2017/12/15/easy-cqrs-with-asp-net-core-mediatr/)
+
