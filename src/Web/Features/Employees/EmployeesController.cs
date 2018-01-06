@@ -76,6 +76,7 @@ namespace EasyCQRS.Web.Features.Employees
 				// Todo: Modify Startup.cs for DI
 				// Todo: Modify GET action to create and return command
 				// Todo: Modify POST action to dispatch command and return command in event of error
+				// Todo: Uncomment @model directive in Edit.cshtml
 
 				return RedirectToAction("List");
 			}
