@@ -44,8 +44,10 @@ namespace EasyCQRS.Web
 			services.AddScoped<IRequestHandler<EmployeeIdQuery, EmployeeIdQueryResponse>, EmployeeIdQueryHandler>();
 
 			// edit employee
-			services.AddScoped<IPipelineBehavior<EditEmployeeCommand, Unit>, EditEmployeeValidationBehavior>();
+			/*
+			services.AddScoped<IPipelineBehavior<EditEmployeeCommand, Unit>, EditEmployeeBehavior>();
 			services.AddScoped<IRequestHandler<EditEmployeeCommand>, EditEmployeeCommandHandler>();
+			*/
 
 			// terminate employee
 			services.AddScoped<IRequestHandler<TerminateEmployeeCommand>, TerminateEmployeeCommandHandler>();

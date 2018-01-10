@@ -1,0 +1,65 @@
+public async Task<IActionResult> Edit([FromRoute] EmployeeIdQuery query)
+{
+	var employee = await _mediator.Send(query);
+
+	if (employee == null)
+		return NotFound();
+
+	var editEmployee = new EditEmployeeCommand
+	{
+		Name = employee.Name,
+		Id = employee.Id,
+		Salary = employee.Salary
+	};
+
+	return View(editEmployee);
+}
+		
+public class EditEmployeeCommand : IRequest
+{
+	public int Id { get; set; }
+
+	public string Name { get; set; }
+
+	public decimal Salary { get; set; }
+}
+
+public class EditEmployeeCommandHandler : IRequestHandler<EditEmployeeCommand>
+{
+	private readonly IEmployeeDomain _employeeDomain;
+
+	public EditEmployeeCommandHandler(IEmployeeDomain employeeDomain)
+	{
+		_employeeDomain = employeeDomain;
+	}
+
+	public Task Handle(EditEmployeeCommand command, CancellationToken cancellationToken)
+	{
+		return _employeeDomain.UpdateEmployeeAsync(command.Id, command.Name, command.Salary);
+	}
+}
+
+public class EditEmployeeBehavior : IPipelineBehavior<EditEmployeeCommand, Unit>
+	{
+		private readonly ILogger<EditEmployeeBehavior> _logger;
+
+		public EditEmployeeBehavior(ILogger<EditEmployeeBehavior> logger)
+		{
+			_logger = logger;
+		}
+
+		public Task<Unit> Handle(EditEmployeeCommand command, CancellationToken cancellationToken, RequestHandlerDelegate<Unit> next)
+		{
+			if (command == null)
+				throw new Exception("Command cannot be null.");
+			if (string.IsNullOrWhiteSpace(command.Name))
+				throw new Exception("Employee name is required.");
+			if (command.Salary <= 0)
+				throw new Exception("Salary must be greater than zero.");
+			return next();
+			//await next();
+			// post handler processing
+			// _logger.LogInformation($"Employee id: {command.Id} created successfully.");
+			//return Unit.Value;
+		}
+	}
