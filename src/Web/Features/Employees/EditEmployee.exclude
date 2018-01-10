@@ -56,7 +56,9 @@ public class EditEmployeeBehavior : IPipelineBehavior<EditEmployeeCommand, Unit>
 				throw new Exception("Employee name is required.");
 			if (command.Salary <= 0)
 				throw new Exception("Salary must be greater than zero.");
-			return next();
+
+			//return next();
+
 			//await next();
 			// post handler processing
 			// _logger.LogInformation($"Employee id: {command.Id} created successfully.");
