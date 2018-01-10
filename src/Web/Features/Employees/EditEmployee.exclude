@@ -40,25 +40,26 @@ public class EditEmployeeCommandHandler : IRequestHandler<EditEmployeeCommand>
 }
 
 public class EditEmployeeBehavior : IPipelineBehavior<EditEmployeeCommand, Unit>
-{
-	private readonly ILogger<EditEmployeeBehavior> _logger;
-
-	public EditEmployeeBehavior(ILogger<EditEmployeeBehavior> logger)
 	{
-		_logger = logger;
-	}
+		private readonly ILogger<EditEmployeeBehavior> _logger;
 
-	public Task<Unit> Handle(EditEmployeeCommand command, CancellationToken cancellationToken, RequestHandlerDelegate<Unit> next)
-	{
-		if (command == null)
-			throw new Exception("Command cannot be null.");
-		if (string.IsNullOrWhiteSpace(command.Name))
-			throw new Exception("Employee name is required.");
-		if (command.Salary <= 0)
-			throw new Exception("Salary must be greater than zero.");
-		return next();
-		// await return next();
-		// post handler processing
-		// _logger.LogInformation($"Employee id: {command.Id} created successfully.");
+		public EditEmployeeBehavior(ILogger<EditEmployeeBehavior> logger)
+		{
+			_logger = logger;
+		}
+
+		public Task<Unit> Handle(EditEmployeeCommand command, CancellationToken cancellationToken, RequestHandlerDelegate<Unit> next)
+		{
+			if (command == null)
+				throw new Exception("Command cannot be null.");
+			if (string.IsNullOrWhiteSpace(command.Name))
+				throw new Exception("Employee name is required.");
+			if (command.Salary <= 0)
+				throw new Exception("Salary must be greater than zero.");
+			return next();
+			//await next();
+			// post handler processing
+			// _logger.LogInformation($"Employee id: {command.Id} created successfully.");
+			//return Unit.Value;
+		}
 	}
-}
