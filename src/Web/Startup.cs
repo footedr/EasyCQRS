@@ -45,7 +45,7 @@ namespace EasyCQRS.Web
 
 			// edit employee
 			/*
-			services.AddScoped<IPipelineBehavior<EditEmployeeCommand, Unit>, EditEmployeeValidationBehavior>();
+			services.AddScoped<IPipelineBehavior<EditEmployeeCommand, Unit>, EditEmployeeBehavior>();
 			services.AddScoped<IRequestHandler<EditEmployeeCommand>, EditEmployeeCommandHandler>();
 			*/
 

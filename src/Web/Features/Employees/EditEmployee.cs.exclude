@@ -39,8 +39,15 @@ public class EditEmployeeCommandHandler : IRequestHandler<EditEmployeeCommand>
 	}
 }
 
-public class EditEmployeeValidationBehavior : IPipelineBehavior<EditEmployeeCommand, Unit>
+public class EditEmployeeBehavior : IPipelineBehavior<EditEmployeeCommand, Unit>
 {
+	private readonly ILogger<EditEmployeeBehavior> _logger;
+
+	public EditEmployeeBehavior(ILogger<EditEmployeeBehavior> logger)
+	{
+		_logger = logger;
+	}
+
 	public Task<Unit> Handle(EditEmployeeCommand command, CancellationToken cancellationToken, RequestHandlerDelegate<Unit> next)
 	{
 		if (command == null)
@@ -50,5 +57,8 @@ public class EditEmployeeValidationBehavior : IPipelineBehavior<EditEmployeeComm
 		if (command.Salary <= 0)
 			throw new Exception("Salary must be greater than zero.");
 		return next();
+		// await return next();
+		// post handler processing
+		// _logger.LogInformation($"Employee id: {command.Id} created successfully.");
 	}
 }
