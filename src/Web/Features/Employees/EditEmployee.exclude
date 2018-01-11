@@ -61,7 +61,7 @@ public class EditEmployeeBehavior : IPipelineBehavior<EditEmployeeCommand, Unit>
 
 			//await next();
 			// post handler processing
-			// _logger.LogInformation($"Employee id: {command.Id} created successfully.");
+			// _logger.LogInformation($"Employee id: {command.Id} edited successfully.");
 			//return Unit.Value;
 		}
 	}
