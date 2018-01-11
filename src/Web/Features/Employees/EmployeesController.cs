@@ -62,21 +62,31 @@ namespace EasyCQRS.Web.Features.Employees
 			if (employee == null)
 				return NotFound();
 
+			// Todo: Construct command and return to view
+
 			return View();
 		}
+
+		// Run in steps to show progress
+
+		// Todo: Create edit employee command				
+		// Todo: Create edit employee command handler
+		// Todo: Create edit employee validation behavior
+		// Todo: Modify Startup.cs for DI
+		// Todo: Modify GET action to create and return command
+		// Todo: Modify POST action to dispatch command and return command in event of error
+		// Todo: Uncomment @model directive in Edit.cshtml
+		// Todo: Demonstrate what happens in behavior when you dont call next()
+		// Todo: Change behavior to await next() then do logging aftewards
+		// Todo: If time, review the rest of the code (commands/queries/handlers)
 
 		[HttpPost]
 		public async Task<IActionResult> Edit()
 		{
 			try
 			{
-				// Todo: Create edit employee command				
-				// Todo: Create edit employee command handler
-				// Todo: Create edit employee validation behavior
-				// Todo: Modify Startup.cs for DI
-				// Todo: Modify GET action to create and return command
-				// Todo: Modify POST action to dispatch command and return command in event of error
-				// Todo: Uncomment @model directive in Edit.cshtml
+				// Todo: Add EditEmployeeCommand as parameter
+				// Todo: Use Mediator to dispatch command
 
 				return RedirectToAction("List");
 			}
@@ -111,16 +121,5 @@ namespace EasyCQRS.Web.Features.Employees
 			var employee = await _mediator.Send(new EmployeeIdQuery { Id = command.Id });
 			return View(employee);
 		}
-
-		// For code demo:
-		// Todo: Create update employee command (id, name, salary)
-		// Todo: Create update employee command handler (use _employeeDomain.UpdateEmployeeAsync)
-		// Todo: Create update GET and POST controller actions (copy and paste the edit ones, change types)
-		// Todo: Create update view (copy and rename Edit.cshtml, change types)
-		// Todo: Ensure update view posts to update controller action
-		// Todo: Update List.cshtml to point to the Update view (vs. Edit)
-		// Todo: Add DI bindings to Startup.cs for update command -> command handler
-		// Todo: Add update employee validation behavior (copy & paste from edit, change names)
-		// Todo: Add DI binding for update validation behavior -> IPipelineBehavior
 	}
 }
