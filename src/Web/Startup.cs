@@ -42,12 +42,10 @@ namespace EasyCQRS.Web
 			// employee query handlers
 			services.AddScoped<IRequestHandler<EmployeeListQuery, EmployeeListQueryResponse>, EmployeeListQueryHandler>();
 			services.AddScoped<IRequestHandler<EmployeeIdQuery, EmployeeIdQueryResponse>, EmployeeIdQueryHandler>();
-
+			
 			// edit employee
-			/*
-			services.AddScoped<IPipelineBehavior<EditEmployeeCommand, Unit>, EditEmployeeBehavior>();
-			services.AddScoped<IRequestHandler<EditEmployeeCommand>, EditEmployeeCommandHandler>();
-			*/
+			//services.AddScoped<IPipelineBehavior<EditEmployeeCommand, Unit>, EditEmployeeBehavior>();
+			//services.AddScoped<IRequestHandler<EditEmployeeCommand>, EditEmployeeCommandHandler>();
 
 			// terminate employee
 			services.AddScoped<IRequestHandler<TerminateEmployeeCommand>, TerminateEmployeeCommandHandler>();
